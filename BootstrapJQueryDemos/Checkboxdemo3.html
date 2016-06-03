@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+
+  <script>
+  function SetSel(elem)
+{
+  var elems = document.getElementsByClassName("chkclass");
+  var currentState = elem.checked;
+  var elemsLength = elems.length;
+  alert(elemsLength);
+  for(i=0; i<elemsLength; i++)
+  {
+    if(elems[i].type === "checkbox")
+    {
+      //alert(elems[i].className);
+       elems[i].checked = false;   
+    }
+  }
+  
+  elem.checked = currentState;
+}
+  </script>
+</head>
+<body>
+<h2>
+using checkbox as radio button
+</h2>
+<input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+<input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+<input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+<input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+  <input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+  <input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+  <input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+  <input  type="checkbox" class="chkclass" onclick="SetSel(this);" />
+  <input type="checkbox" class="chkclass1" onclick="SetSel(this);" />
+  <input type="checkbox" class="chkclass1" onclick="SetSel(this);" />
+  <input type="checkbox" class="chkclass1" onclick="SetSel(this);" />
+  
+  
+  </body>
+</html>

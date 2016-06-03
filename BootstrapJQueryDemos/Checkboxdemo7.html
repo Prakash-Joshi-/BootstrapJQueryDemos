@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+<body>
+<h2>
+using checkbox as radio button
+</h2>
+<h2>Related Sets</h2>
+<form>
+  <fieldset>
+    <h3>"fieldA"</h3>
+    <input type="checkbox" name="fieldA" value="1" /> One<br/>
+    <input type="checkbox" name="fieldA" value="2" /> Two
+    
+    <h3>
+    "fieldB[]"
+    </h3>
+    <input type="checkbox" name="fieldB[]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldB[]" value="2" /> Two
+    
+    <h3>
+    "fieldC[1]"
+    </h3>
+    <input type="checkbox" name="fieldC[1]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldC[1]" value="2" /> Two
+    
+    <h3>
+    "fieldD[1]" and "fieldD[2]"
+    </h3>
+    <input type="checkbox" name="fieldD[1]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldD[2]" value="2" /> Two
+    
+    <h3>
+    "fieldE[foo]"
+    </h3>
+    <input type="checkbox" name="fieldE[foo]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldE[foo]" value="2" /> Two
+    
+    <h3>
+    "fieldF[foo]" and "fieldF[bar]"
+    </h3>
+    <input type="checkbox" name="fieldF[foo]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldF[bar]" value="2" /> Two
+    
+    <h3>
+    "fieldG[1][]"
+    </h3>
+    <input type="checkbox" name="fieldG[1][]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldG[1][]" value="2" /> Two
+    
+    <h3>
+    "fieldH[beta][1]
+    </h3>
+    <input type="checkbox" name="fieldH[beta][1]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldH[beta][1]" value="2" /> Two
+  </fieldset>
+</form>
+<h2>NOT Related</h2>
+<form>
+  <fieldset>
+    <h3>
+    "fieldI" and "fieldJ"
+    </h3>
+    <input type="checkbox" name="fieldI" value="1" /> One<br/>
+    <input type="checkbox" name="fieldJ" value="2" /> Two
+    
+    <h3>
+    "fieldK"
+    </h3>
+    <input type="checkbox" name="fieldK[foo][]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldK[bar][]" value="2" /> Two
+    
+    <h3>
+    "fieldL[1]" and "fieldM[2]"
+    </h3>
+    <input type="checkbox" name="fieldL[1]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldM[2]" value="2" /> Two
+    
+    <h3>
+    "fieldN[foo]" and "fieldO[bar]"
+    </h3>
+    <input type="checkbox" name="fieldN[foo]" value="1" /> One<br/>
+    <input type="checkbox" name="fieldO[bar]" value="2" /> Two
+  </fieldset>
+</form>
+<script>
+jQuery(document).ready(function($){
+
+    $(document)
+      .on('change','input[type="checkbox"]',function(e){
+        var $t = $(this);
+        var $form = $t.closest('form');
+        var name = $t.attr('name');
+        var selector = 'input[type="checkbox"]';
+        var m = (new RegExp('^(.+)\\[([^\\]]+)\\]$')).exec( name );
+        if( m ){
+          selector += '[name^="'+m[1]+'["][name$="]"]';
+        }else{
+          selector += '[name="'+name+'"]';
+        }
+        $(selector, $form).not($t).prop('checked',false);
+      });
+
+});
+
+
+</script>
+
+</body>
+</html>

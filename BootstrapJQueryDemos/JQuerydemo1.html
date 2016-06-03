@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+</head>
+<body>
+    
+    <script src="jquery/jquery-1.11.3.min.js"></script>
+	<pre>
+	To ensure that their code runs after the browser finishes loading the document, 
+	many JavaScript programmers wrap their code in an onload function
+	
+	window.onload= function(){
+	alert("First");
+	}
+	
+	Unfortunately, the code doesn't run until all images are finished downloading, including banner ads. 
+	To run code as soon as the document is ready to be manipulated, jQuery has a statement known as the ready event:
+	
+	$(document).ready(function(){
+	alert("Second");
+	});
+	
+	<a href="http://jquery.com/" >jQuery</a>
+	
+	<p>
+	This will hide on click
+	</p>
+	
+	</pre>
+	<br>
+    <script>
+	window.onload= function(){
+	alert("First");
+	}
+	$(document).ready(function(){
+	
+	alert("Second");
+	
+	$("a").click(function(){
+	alert("Thanks for wisiting");
+	});
+	
+	$("p").click(function(){
+	$(this).hide();
+	})
+	
+	});
+ 
+    // Your code goes here.
+ 
+    </script>
+</body>
+</html>

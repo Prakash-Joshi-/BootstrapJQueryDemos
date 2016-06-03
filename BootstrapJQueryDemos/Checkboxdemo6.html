@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+ label {
+  display: block;
+}
+</style>
+</head>
+<body>
+<h2>
+using checkbox as radio button
+</h2>
+
+<label><input type="checkbox" name="cb1" class="chb" /> CheckBox1</label>
+<label><input type="checkbox" name="cb2" class="chb" /> CheckBox2</label>
+<label><input type="checkbox" name="cb3" class="chb" /> CheckBox3</label>
+<label><input type="checkbox" name="cb4" class="chb" /> CheckBox4</label>
+
+<script>
+// once checked will not be able to unchecked 
+//$(".chb").change(function() {
+//    $(".chb").prop('checked', false);
+//    $(this).prop('checked', true);
+//});
+
+// once checked will be able to unchecked again
+$(".chb").change(function() {
+    var checked = $(this).is(':checked');
+    $(".chb").prop('checked',false);
+    if(checked) {
+        $(this).prop('checked',true);
+    }
+});
+</script>
+
+</body>
+</html>

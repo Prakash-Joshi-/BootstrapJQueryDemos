@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+</head>
+<body>
+<h2>
+using checkbox as radio button
+</h2>
+
+<input type="checkbox" class="chkclass" onclick="SetSel(this);" />
+<input type="checkbox" class="chkclass" onclick="SetSel(this);" />
+<input type="checkbox" class="chkclass" onclick="SetSel(this);" />
+<input type="checkbox" class="chkclass" onclick="SetSel(this);" />
+
+<script>
+
+$(function(){
+      $("input:checkbox.chkclass").each(function(){
+        $(this).change(function(){
+            $("input:checkbox.chkclass").not($(this)).prop("checked",false);
+            $(this).prop("checked", $(this).prop("checked"));       
+        });   
+      });
+    });
+</script>
+
+</body>
+</html>
