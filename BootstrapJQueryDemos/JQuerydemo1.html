@@ -1,13 +1,19 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Demo</title>
+    <style>
+        a.test {
+            font-weight: bold;
+            color:green;
+        }
+    </style>
 </head>
 <body>
-    
+
     <script src="jquery/jquery-1.11.3.min.js"></script>
-	<pre>
+    <pre>
 	To ensure that their code runs after the browser finishes loading the document, 
 	many JavaScript programmers wrap their code in an onload function
 	
@@ -22,34 +28,57 @@
 	alert("Second");
 	});
 	
-	<a href="http://jquery.com/" >jQuery</a>
+    <a href="http://jquery.com/">jQuery</a>
 	
-	<p>
+    <a class="test1" href="http://jquery.com/">jQuery no visit with class attribute</a>
+    <a id="myid" href="http://jquery.com/">jQuery no visit with ID</a>
+        <a  href="http://jquery.com/">jQuery no visit hide slow</a>
+    <p>
 	This will hide on click
 	</p>
-	
+	<input type="text" />
 	</pre>
-	<br>
+    <br>
     <script>
-	window.onload= function(){
-	alert("First");
-	}
-	$(document).ready(function(){
-	
-	alert("Second");
-	
-	$("a").click(function(){
-	alert("Thanks for wisiting");
-	});
-	
-	$("p").click(function(){
-	$(this).hide();
-	})
-	
-	});
- 
-    // Your code goes here.
- 
+        window.onload = function () {
+            alert("First");
+        }
+        $(document).ready(function () {
+            alert("Second");
+
+            $("a").click(function () {
+                alert("Thanks for wisiting");
+            });
+
+            $("a.test1").click(function () {
+                alert("Thanks for wisiting. It will not go to linked page");
+                event.preventDefault();
+            });
+
+            $("#myid a").click(function () {
+                alert("Thanks for wisiting using ID. It will not go to linked page");
+                event.preventDefault();
+            });
+
+            $("p").click(function () {
+                $(this).hide();
+            });
+
+            $('input[type="text"]').on('focus blur', function () {
+                alert("user focused or blured on text box");
+            });
+
+            $('a').addClass('test');
+
+            $('a').click(function () {
+                $(this).hide('slow');
+            });
+
+
+        });
+
+        // Your code goes here.
+
     </script>
 </body>
 </html>
